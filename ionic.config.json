@@ -1,0 +1,7 @@
+{
+  "name": "opencv-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
