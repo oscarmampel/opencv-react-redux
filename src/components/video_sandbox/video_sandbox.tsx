@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { FC, useRef } from 'react'
 import { IonCard, IonCardHeader, IonCardContent, IonButton } from "@ionic/react";
 import { startCapture, stopCapture, applyFilter } from "./actions";
-import { THRESHOLD, NO_FILER } from "./filter_types";
+import { THRESHOLD, NO_FILER, HAARD_CASCADE, YOLO3 } from "./filter_types";
 import { State } from "./reducer";
 import style from './style.module.css'
 
@@ -20,6 +20,8 @@ export const VideoSandbox: FC = () => {
   const stopRc = () => dispatch(stopCapture())
   const applyBF = () => dispatch(applyFilter(THRESHOLD))
   const resetF = () => dispatch(applyFilter(NO_FILER))
+  const applyHC = () => dispatch(applyFilter(HAARD_CASCADE))
+  const applyYolo = () =>  dispatch(applyFilter(YOLO3))
   
   return (
     <IonCard>
@@ -40,6 +42,12 @@ export const VideoSandbox: FC = () => {
         </IonButton>
         <IonButton onClick = { resetF } hidden = { filterType === NO_FILER || !isCapturing}>
           Reset Filter
+        </IonButton>
+        <IonButton onClick = { applyHC } hidden = { filterType === HAARD_CASCADE || !isCapturing}>
+          Apply Haard Cascade
+        </IonButton>
+        <IonButton onClick = { applyYolo } hidden = { filterType === YOLO3 || !isCapturing}>
+          Apply YOLO3
         </IonButton>
       </IonCardContent>
     </IonCard>
